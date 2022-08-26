@@ -1,3 +1,4 @@
+import 'package:db_flutter_app/sqlite/add_person.dart';
 import 'package:db_flutter_app/sqlite/daos/PersonDao.dart';
 import 'package:db_flutter_app/sqlite/models/Person.dart';
 import 'package:flutter/material.dart';
@@ -30,25 +31,37 @@ class _ListPeopleState extends State<ListPeople> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: widget.title),
+      appBar: AppBar(
+        title: widget.title,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.add),
+            onPressed: (){
+              Navigator.push(context, 
+                MaterialPageRoute(builder: (context) => AddPerson()));
+            }
+          )
+        ],
+      ),
       body: ListView(children: buildListItems()),
     );
   }
 
   List<Widget> buildListItems(){
     return people.map((p) => Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
         child: Container(
           decoration: BoxDecoration(
             border: Border.all(color: Colors.grey),
             borderRadius: BorderRadius.circular(5)
           ),
           child: ListTile(
-            leading: Text(p.id!.toString()),
+            leading: Text(p.id != null ? p.id.toString() : "-1"),
             title: Text(p.firstName),
             subtitle: Text(p.lastName),
           ),
         ),
-      )).toList();
+      )
+    ).toList();
   }
 }
