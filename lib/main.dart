@@ -1,4 +1,5 @@
 import 'package:db_flutter_app/screens/home.dart';
+import 'package:db_flutter_app/sqlite/list_people.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -18,7 +19,8 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: "/",
       routes: {
-        "/":(context) => const Home()
+        "/":(context) => const Home(),
+        "/people":(context) => const ListPeople(),
       },
     );
   }
