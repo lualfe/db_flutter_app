@@ -1,3 +1,4 @@
+import 'package:db_flutter_app/firebase/list_cars.dart';
 import 'package:db_flutter_app/nosql/list_books.dart';
 import 'package:db_flutter_app/screens/home.dart';
 import 'package:db_flutter_app/sqlite/list_people.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
         "/": (context) => const Home(),
         "/people": (context) => const ListPeople(),
         "/books": (context) => const ListBooks(),
+        "/cars": (context) => const ListCars(),
       },
     );
   }
